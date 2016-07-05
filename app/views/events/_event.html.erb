@@ -3,6 +3,15 @@
     <p>
         <%= event.location %> </br>
         <%= event.date_on %> </br>
+        People coming to the event:
+        <% @users = EventAttendance.where(event_id: event.id).all %>
+        <% @users.each do |user| %>
+            <strong><%= User.find(user.user_id).name %>
+            <% if @users.last.user_id == user.id %>
+                , 
+            <% end %>
+            </strong>
+        <% end %>
         <% if session[:current_user] != nil && EventAttendance.find_by(user_id: session[:current_user], event_id: event.id) == nil %>
             <form action="/event_signup" method="post">
                 <input type="hidden" name="user_id" value="<%= session[:current_user]%>">
