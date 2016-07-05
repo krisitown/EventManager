@@ -1,0 +1,15 @@
+<div class="event-container">
+    <h3><%= event.name %></h3></br>
+    <p>
+        <%= event.location %> </br>
+        <%= event.date_on %> </br>
+        <% if session[:current_user] != nil && EventAttendance.find_by(user_id: session[:current_user], event_id: event.id) == nil %>
+            <form action="/event_signup" method="post">
+                <input type="hidden" name="user_id" value="<%= session[:current_user]%>">
+                <input type="hidden" name="event_id" value="<%= event.id%>">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+                <input type="submit" value="Sign up">
+            </form>
+        <% end %>
+    </p>
+</div>
