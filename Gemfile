@@ -16,6 +16,8 @@ gem 'bootstrap-sass'
 
 gem 'will_paginate'
 
+gem 'rails_12factor'
+
 gem 'bcrypt'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
