@@ -7,7 +7,30 @@ header > div {
     display: block;
 }
 
-div > a {
+.top-links > a {
     text-decoration: none;
     color: white;
+    font-size: 1.4em;
+    padding: 0.3em;
+}
+
+.top-links > a:hover {
+    color: deepskyblue;
+    text-decoration: none;
+}
+
+.navigation {
+    float: right;
+}
+
+.navigation > a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4em;
+    padding: 0.3em;
+}
+
+.navigation > a:hover {
+    color: deepskyblue;
+    text-decoration: none;
 }

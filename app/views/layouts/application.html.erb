@@ -8,10 +8,14 @@
 </head>
 <body>
 
-<div class="flash-success"><%= flash[:success] %></div>
-<div class="flash-danger"><%= flash[:danger] %></div> 
-
-<%= render 'layouts/header' %>
+	<%= render 'layouts/header' %>
+	<div class="container">
+		<!-- this creates the greeting message for successful signup -->
+		<% flash.each do |message_type, message| %>
+			<div class="alert alert-<%= message_type %>">
+				<%= message %>
+			</div>
+		<% end %>
 
 <%= yield %>
 

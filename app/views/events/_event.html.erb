@@ -1,24 +1,26 @@
 <div class="event-container">
+    <div class="event-content" >
     <h3><%= event.name %></h3></br>
-    <p>
+    <p> 
+        Location:
         <%= event.location %> </br>
+        Date:
         <%= event.date_on %> </br>
+        Organizer:
+        <strong><%= User.find(event.user_id).name %></strong> </br>
         People coming to the event:
         <% @users = EventAttendance.where(event_id: event.id).all %>
         <% @users.each do |user| %>
-            <strong><%= User.find(user.user_id).name %>
-            <% if @users.last.user_id == user.id %>
-                , 
-            <% end %>
-            </strong>
+            <%= link_to User.find(user.user_id).name, User.find(user.user_id) %>
         <% end %>
         <% if session[:current_user] != nil && EventAttendance.find_by(user_id: session[:current_user], event_id: event.id) == nil %>
             <form action="/event_signup" method="post">
                 <input type="hidden" name="user_id" value="<%= session[:current_user]%>">
                 <input type="hidden" name="event_id" value="<%= event.id%>">
                 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-                <input type="submit" value="Sign up">
+                <input type="submit" value="Sign up" class="btn-primary">
             </form>
         <% end %>
     </p>
+    </div>
 </div>

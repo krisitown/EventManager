@@ -1,0 +1,16 @@
+<div class="container">
+    <h2><%= @user.name %></h2>
+    <div class="organized-events">
+        <% @organized_events = Event.where(user_id: @user.id).all %>
+        <% @organized_events.each do |event| %>
+            <%= render event %>
+        <% end %>
+    </div>
+    
+    <div class="entered-events">
+        <% @entered_events = EventAttendance.where(user_id: @user.id).all %>
+        <% @entered_events.each do |entered_event| %>
+            <%= render Event.find(entered_event.event_id) %>
+        <% end %>
+    </div>
+</div>

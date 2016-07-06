@@ -1,4 +1,5 @@
 <h2>Events:</h2>
-<% @events.each do |event|%>
-    <%= render event %>
-<% end %>
+<ul class="events">
+    <%= render @events %>
+</ul>
+<%= will_paginate @microposts %>
